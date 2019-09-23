@@ -16,3 +16,14 @@ CREATE TABLE `user` (
 ALTER TABLE `user` ADD UNIQUE (`username`);
 ALTER TABLE `user` ADD UNIQUE (`email`);
 ALTER TABLE `user` ADD UNIQUE (`phone`);
+
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL ,
+  `age` varchar(255) DEFAULT NULL,
+  `sex` varchar(50) DEFAULT NULL,
+  
+
+  PRIMARY KEY (`id`)
+);
