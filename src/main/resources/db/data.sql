@@ -4,5 +4,7 @@ INSERT INTO `user` (id, username, password, role) VALUES ('3', 'user1', '1234', 
 INSERT INTO `user` (id, username, password, role) VALUES ('4', 'user2', '1234', 'user');
 INSERT INTO `user` (id, username, password, role) VALUES ('5', 'user3', '1234', 'user');
 INSERT INTO `user` (id, username, password, role) VALUES ('6', 'user4', '1234', 'user');
-INSERT INTO `student` (id, name, age, sex) VALUES ('1','my', '28', '1');
+INSERT INTO `student` (id, name, age, sex) VALUES ('1','my', '28', 'nan');
+INSERT INTO `student` (id, name, age, sex) VALUES ('2','yy', '21', 'nan');
+INSERT INTO `student` (id, name, age, sex) VALUES ('3','rzq', '20', 'nan');
 COMMIT;

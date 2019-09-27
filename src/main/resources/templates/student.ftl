@@ -1,6 +1,6 @@
 <html>
 <head></head>
 <body>
-<h1>welcome ${student.name} !</h1><br> 
+<h1>欢迎 ${student.name} 嗷!</h1><br> 
 </body>
 </html>
