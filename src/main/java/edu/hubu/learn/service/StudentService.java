@@ -1,5 +1,7 @@
 package edu.hubu.learn.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,8 @@ public class StudentService {
 
     public Student getStudent(Long id) {
         return studentDao.findById(id).get();
+    }
+    public List<Student> getStudents(){
+        return studentDao.findAll();
     }
 }
