@@ -18,6 +18,9 @@ public class StudentService {
         return studentDao.findById(id).get();
     }
     public List<Student> getStudents(){
-        return studentDao.findAll();
+         return studentDao.findAll();
+    }
+    public Student addUser(Student student) {
+        return studentDao.save(student);
     }
 }

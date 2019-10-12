@@ -39,6 +39,18 @@ public class StudentController {
         mav.setViewName("students");
         return mav;
     }
+    @RequestMapping("/add")
+    public ModelAndView addstudent() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("student_add");
+        return mav;
+    }
 
+    @RequestMapping("/do_add")
+    public ModelAndView doAddUser(Student student) {
+        studentService.addUser(student);
+        ModelAndView mav = new ModelAndView("redirect:/student/list");
+        return mav;
+    }
     
 }

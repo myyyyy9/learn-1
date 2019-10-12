@@ -22,23 +22,26 @@
      <div class="row">
        <div class="col-md-4">
          <ul class="nav nav-pills nav-stacked">
-           <li role="presentation" class="active"><a href="/student/list">列表</a></li>
-           <li role="presentation"><a href="/student/add">新增</a></li>
+           <li role="presentation"><a href="/student/list">列表</a></li>
+           <li role="presentation" class="active"><a href="/student/add">新增</a></li>
          </ul>
        </div>
        <div class="col-md-8">      
-         <table class="table table-hover">
-           <thead>
-           <th>ID</th><th>姓名</th><th>年龄</th><th>性别</th>
-           </thead>
-           <tbody>
-           <#list students as student>
-           <tr>
-           <td>${student.id}</td><td>${student.name}</td><td>${student.age}</td><td>${student.sex}</td>
-           </tr>
-           </#list>
-           </tbody>
-         </table>
+         <form action="/student/do_add">
+             <div class="form-group">
+                 <label for="name">学生姓名</label>
+                 <input type="text" class="form-control" id="name" name="name" placeholder="请输入学生姓名">
+             </div>
+             <div class="form-group">
+                 <label for="age">年龄</label>
+                 <input type="text" class="form-control" id="age" name="age" placeholder="请输入年龄">
+             </div>
+             <div class="form-group">
+                 <label for="sex">性别</label>
+                 <input type="text" class="form-control" id="sex" name="sex" placeholder="请输入性别">
+             </div>
+             <button type="submit" class="btn btn-default">确认</button>
+         </form>
        </div>
      </div>
    </div>
