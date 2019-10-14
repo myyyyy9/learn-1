@@ -47,7 +47,7 @@ public class StudentController {
     }
 
     @RequestMapping("/do_add")
-    public ModelAndView doAddUser(Student student) {
+    public ModelAndView doAddStudent(Student student) {
         studentService.addUser(student);
         ModelAndView mav = new ModelAndView("redirect:/student/list");
         return mav;
