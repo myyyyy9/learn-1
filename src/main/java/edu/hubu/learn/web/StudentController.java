@@ -58,4 +58,20 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("redirect:/student/list");
         return mav;
     }
+    @RequestMapping("/modify/{id}")
+    public ModelAndView modifyStudent(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("student", studentService.getStudent(id));
+        mav.setViewName("student_modify");
+        return mav;
+    }
+
+    @RequestMapping("/do_modify")
+    public ModelAndView doModifyStudent(Student student) {
+        
+        studentService.modifyStudent(student);
+        ModelAndView mav = new ModelAndView("redirect:/student/list");
+        return mav;
+    }
+
 }

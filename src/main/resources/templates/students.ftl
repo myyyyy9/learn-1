@@ -29,13 +29,14 @@
        <div class="col-md-8">      
          <table class="table table-hover">
            <thead>
-           <th>ID</th><th>姓名</th><th>年龄</th><th>性别</th><th>删除</th>
+           <th>ID</th><th>姓名</th><th>年龄</th><th>性别</th><th>删除</th><th>修改</th>
            </thead>
            <tbody>
            <#list students as student>
            <tr>
            <td>${student.id}</td><td>${student.name}</td><td>${student.age}</td><td>${student.sex}</td>
             <td><a href="/student/delete/${student.id}">删除</a></td>
+            <td><a href="/student/modify/${student.id}">修改</a></td>
            </tr>
            </#list>
            </tbody>
