@@ -52,5 +52,10 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("redirect:/student/list");
         return mav;
     }
-    
+    @RequestMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id) {
+        studentService.deleteStudent(id);
+        ModelAndView mav = new ModelAndView("redirect:/student/list");
+        return mav;
+    }
 }
