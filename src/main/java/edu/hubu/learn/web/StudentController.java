@@ -4,16 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.web.servlet.ModelAndView;
+import javax.servlet.http.HttpServletRequest;
 
 import edu.hubu.learn.entity.Student;
 import edu.hubu.learn.service.StudentService;
 
 
 @Controller
+
 @RequestMapping("/student")
 public class StudentController {
 
@@ -73,5 +76,20 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("redirect:/student/list");
         return mav;
     }
+    @RequestMapping("/search")
+    public ModelAndView searchStudent() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("student_search");
+        return mav;
+    }
 
+    @RequestMapping("/do_search")
+    public ModelAndView doSearchStudent(HttpServletRequest httpRequest) {
+        ModelAndView mav = new ModelAndView();
+        String keyword = httpRequest.getParameter("keyword");
+        List<Student> students = studentService.searchStudents(keyword);
+        mav.addObject("students", students);
+        mav.setViewName("students");
+        return mav;
+    }
 }
