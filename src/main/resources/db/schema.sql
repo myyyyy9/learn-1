@@ -23,7 +23,7 @@ CREATE TABLE `student` (
   `name` varchar(50) DEFAULT NULL ,
   `age` varchar(255) DEFAULT NULL,
   `sex` varchar(50) DEFAULT NULL,
-  
+   `avatar_url` varchar(200) DEFAULT '' comment '头像',
 
   PRIMARY KEY (`id`)
 );

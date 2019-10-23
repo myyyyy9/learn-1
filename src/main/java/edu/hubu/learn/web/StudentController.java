@@ -1,22 +1,22 @@
 package edu.hubu.learn.web;
 
 import java.util.List;
-
+import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.web.multipart.MultipartFile;
 import edu.hubu.learn.entity.Student;
 import edu.hubu.learn.service.StudentService;
-
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
-
+@Slf4j
 @RequestMapping("/student")
 public class StudentController {
 
@@ -91,5 +91,29 @@ public class StudentController {
         mav.addObject("students", students);
         mav.setViewName("students");
         return mav;
+    }
+    @RequestMapping("/add_avatar/{id}")
+    public ModelAndView addStudentAvatar(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("student", studentService.getStudent(id));
+        mav.setViewName("student_add_avatar");
+        return mav;
+    }
+
+    @RequestMapping("/do_add_avatar/{id}")
+    public ModelAndView doAddStudentAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable Long id) {
+        try {
+            String fileName = file.getOriginalFilename();
+            String filePath = ResourceUtils.getURL("classpath:").getPath() + "../../../resources/main/static/";
+            File dest = new File(filePath + fileName);
+            log.info(dest.getAbsolutePath());
+            file.transferTo(dest);
+            Student student = studentService.getStudent(id);
+            student.setAvatar(fileName);
+            studentService.modifyStudent(student);
+        } catch (Exception e) {
+            log.error("upload avatar error", e.getMessage());
+        }
+        return new ModelAndView("redirect:/student/list");
     }
 }

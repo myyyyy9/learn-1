@@ -17,4 +17,7 @@ public class Student {
     private String age;
 
     private String sex;
+
+    @Column(name="avatar_url")
+    private String avatar;
 }

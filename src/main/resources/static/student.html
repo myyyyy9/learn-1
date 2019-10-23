@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>user manage</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message}}
+        <table>
+            <tr v-for="student in students">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.sex }}</td>
+                <td>{{ student.avatar }}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello, world',
+                students: []
+            },
+            created: function () {
+                this.getStudents();
+            },
+            methods: {
+                getStudents: function () {
+                    var vm = this
+                    vm.$http.get('/rest/student/list').then(
+                        function (data) {
+                            vm.students = data.body
+                        }).catch(function (response) {
+                        console.log(response)
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
