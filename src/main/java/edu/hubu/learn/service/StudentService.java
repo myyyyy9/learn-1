@@ -24,7 +24,7 @@ public class StudentService {
     public List<Student> getStudents(){
          return studentDao.findAll(new Sort(Direction.DESC, "id"));
     }
-    public Student addUser(Student student) {
+    public Student addStudent(Student student) {
         return studentDao.save(student);
     }
     public void deleteStudent(Long id) {
